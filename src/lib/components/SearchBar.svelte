@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import searchIcon from '../icons/SearchIcon.svg';
+	import searchIcon from '../assets/icons/SearchIcon.svg';
 	export let searchFunction: (searchInput: string) => void;
 
 	onMount(() => {
@@ -20,8 +20,8 @@
 	}
 </script>
 
-<form class="border rounded-2xl px-4 h-12 w-full flex flex-row justify-between items-center">
-	<input type="text" placeholder="Search for videos" class="bg-transparent h-full flex-1" />
+<form class="flex flex-row items-center justify-between w-full h-12 px-4 border rounded-2xl">
+	<input type="text" placeholder="Search for videos" class="flex-1 h-full bg-transparent" />
 	<button on:click={() => handleSearch()} class="w-auto h-8">
 		<img class="w-auto h-full" src={searchIcon} alt="Search" />
 	</button>

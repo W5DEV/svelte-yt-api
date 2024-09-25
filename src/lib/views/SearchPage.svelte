@@ -5,7 +5,7 @@
 	export let searchFunction;
 </script>
 
-<div class="flex flex-col items-center justify-center w-full max-w-3xl gap-4 px-2 py-12">
+<section class="flex flex-col items-center justify-center w-full max-w-3xl gap-4 px-2 py-12">
 	<Heading />
 	<SearchBar {searchFunction} />
-</div>
+</section>

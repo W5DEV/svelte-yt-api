@@ -5,8 +5,8 @@
 	$: openMenu = false;
 </script>
 
-<section
-	class="flex items-center justify-between px-4 py-4 border-b border-base-content/20 sm:px-6 sm:py-6 lg:px-8 w-full"
+<div
+	class="flex items-center justify-between w-full px-4 py-4 border-b border-base-content/20 sm:px-6 sm:py-6 lg:px-8"
 >
 	<h1 class="text-base font-semibold leading-7">
 		Results for "{searchQuery}"
@@ -78,4 +78,4 @@
 			</ul>
 		</div>
 	</div>
-</section>
+</div>
