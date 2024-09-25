@@ -1,7 +1,7 @@
-export async function getSearchResults(query: string) {
+export async function getSearchResults(query: string, order: string) {
 	try {
 		const response = await fetch(
-			`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&type=video&key=${import.meta.env.VITE_API_KEY}`,
+			`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&type=video&order=${order}&key=${import.meta.env.VITE_API_KEY}`,
 			{
 				method: 'GET'
 			}

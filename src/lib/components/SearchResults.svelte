@@ -1,29 +1,11 @@
 <script async script lang="ts">
-	import { getVideoStatistics } from '$lib/api/getVideoStatistics';
 	import type { Statistics } from '$lib/types/statistics';
 	import type { Video } from '$lib/types/video';
 
-	export let searchResults: Video[] = [];
-
-	let videoStats: { [key: string]: Statistics } = {};
+	export let searchResults: Video[], videoStats: { [key: string]: Statistics }, loading: boolean;
+	$: searchResults;
 	$: videoStats;
-
-	async function getVideoStats() {
-		for (let results of searchResults) {
-			const stats: Statistics = await getVideoStatistics(results.id.videoId);
-			videoStats[results.id.videoId] = stats;
-			console.log(videoStats);
-		}
-	}
-
-	getVideoStats();
-
-	$: loading = true;
-	$: {
-		if (Object.keys(videoStats).length === searchResults.length) {
-			loading = false;
-		}
-	}
+	$: loading;
 </script>
 
 <section>
@@ -45,15 +27,27 @@
 								target="_blank"
 								class="text-lg font-bold hover:underline">{video.snippet.title}</a
 							>
-							<div class="flex flex-row gap-1 justify-start items-center">
-								<p class="text-xs">
-									{Number(videoStats[video.id.videoId]?.commentCount).toLocaleString()} comments
-								</p>
-								<p>&#x2022;</p>
-								<p class="text-xs">
-									{Number(videoStats[video.id.videoId]?.viewCount).toLocaleString()} views
-								</p>
-							</div>
+							{#if video.snippet.channelTitle !== 'YouTube Movies'}
+								<div class="flex flex-row gap-1 justify-start items-center">
+									<p class="text-xs">
+										{videoStats[video.id.videoId]?.commentCount === '0' ||
+										videoStats[video.id.videoId]?.commentCount === 'undefined' ||
+										videoStats[video.id.videoId]?.commentCount === 'NaN' ||
+										videoStats[video.id.videoId]?.commentCount === undefined
+											? 'No'
+											: Number(videoStats[video.id.videoId]?.commentCount).toLocaleString()} comments
+									</p>
+									<p>&#x2022;</p>
+									<p class="text-xs">
+										{videoStats[video.id.videoId]?.viewCount === '0' ||
+										videoStats[video.id.videoId]?.viewCount === 'undefined' ||
+										videoStats[video.id.videoId]?.viewCount === 'NaN' ||
+										videoStats[video.id.videoId]?.viewCount === undefined
+											? 'No'
+											: Number(videoStats[video.id.videoId]?.viewCount).toLocaleString()} views
+									</p>
+								</div>
+							{/if}
 						</div>
 						<div class="flex flex-row gap-2 justify-start items-center">
 							<img

@@ -1,6 +1,14 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import searchIcon from '../icons/SearchIcon.svg';
 	export let searchFunction: (searchInput: string) => void;
+
+	onMount(() => {
+		const searchInput = document.querySelector('input');
+		if (searchInput) {
+			searchInput.value = '';
+		}
+	});
 
 	function handleSearch() {
 		const searchInput = document.querySelector('input')?.value;

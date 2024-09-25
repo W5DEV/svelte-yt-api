@@ -1,7 +1,7 @@
 export async function getVideoStatistics(id: string) {
 	try {
 		const response = await fetch(
-			`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=&key=${import.meta.env.VITE_API_KEY}`,
+			`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${import.meta.env.VITE_API_KEY}`,
 			{
 				method: 'GET'
 			}
