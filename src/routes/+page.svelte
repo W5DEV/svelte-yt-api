@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { getSearchResults } from '$lib/api/getSearchResults';
-	import SearchResults from '$lib/pages/SearchResults.svelte';
+	import SearchResults from '$lib/views/SearchResults.svelte';
 	import type { Video } from '$lib/types/video';
-	import SearchPage from '$lib/pages/SearchPage.svelte';
+	import SearchPage from '$lib/views/SearchPage.svelte';
 	import type { Statistics } from '$lib/types/statistics';
 	import { getVideoStatistics } from '$lib/api/getVideoStatistics';
 
