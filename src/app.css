@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+	@apply bg-neutral-900 text-neutral-200 border-neutral-200;
+}
