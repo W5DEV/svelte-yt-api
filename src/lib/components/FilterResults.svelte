@@ -3,13 +3,14 @@
 	export let searchQuery: string;
 
 	$: openMenu = false;
+	$: order = 'Relevance';
 </script>
 
 <div
 	class="flex items-center justify-between w-full px-4 py-4 border-b border-base-content/20 sm:px-6 sm:py-6 lg:px-8"
 >
 	<h1 class="text-base font-semibold leading-7">
-		Results for "{searchQuery}"
+		Results for '{searchQuery}'
 	</h1>
 
 	<!-- Sort dropdown -->
@@ -22,7 +23,7 @@
 			aria-expanded="false"
 			aria-haspopup="true"
 		>
-			Sort Results
+			Sort Results by <span class="font-light">'{order}'</span>
 			<svg class="w-5 h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 				<path
 					fill-rule="evenodd"
@@ -43,6 +44,7 @@
 					<button
 						on:click={() => {
 							updateOrder('Relevance');
+							order = 'Relevance';
 							openMenu = false;
 						}}
 						class="block w-full px-4 py-2 text-sm hover:bg-neutral-800"
@@ -55,6 +57,7 @@
 					<button
 						on:click={() => {
 							updateOrder('Rating');
+							order = 'Rating';
 							openMenu = false;
 						}}
 						class="block w-full px-4 py-2 text-sm hover:bg-neutral-800"
@@ -67,6 +70,7 @@
 					<button
 						on:click={() => {
 							updateOrder('Date');
+							order = 'Date';
 							openMenu = false;
 						}}
 						class="block w-full px-4 py-2 text-sm hover:bg-neutral-800"
